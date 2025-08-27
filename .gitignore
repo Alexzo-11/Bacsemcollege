@@ -1,0 +1,1549 @@
+// Toggle mobile menu
+function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+  }
+  
+  // Handle contact form
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const formMessage = document.getElementById('formMessage');
+    
+    if (name && email && message) {
+      formMessage.textContent = "Thank you for contacting us, " + name + "!";
+      formMessage.style.color = "green";
+      this.reset();
+    } else {
+      formMessage.textContent = "Please fill in all fields.";
+      formMessage.style.color = "red";
+    }
+  });
+
+  // -------- Slideshow --------
+  let slideIndex = 0;
+  showSlides();
+  
+  function showSlides() {
+    let slides = document.getElementsByClassName("slide");
+    
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+    }
+    
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1 }    
+    
+    slides[slideIndex - 1].style.display = "block";  
+    setTimeout(showSlides, 3000); // Change image every 3 seconds
+  }  
+
+  const eventDate = new Date("Sep 15, 2025 10:00:00").getTime(); // set your event date here
+
+const countdownFunction = setInterval(function() {
+  const now = new Date().getTime();
+  const distance = eventDate - now;
+
+  if (distance < 0) {
+    clearInterval(countdownFunction);
+    document.getElementById("timer").innerHTML = "🎉 The Event Has Started!";
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("days").innerHTML = days;
+  document.getElementById("hours").innerHTML = hours;
+  document.getElementById("minutes").innerHTML = minutes;
+  document.getElementById("seconds").innerHTML = seconds;
+}, 1000);
+// teachers
+// Animation on scroll for teacher cards
+const teacherCards = document.querySelectorAll('.teacher-card');
+
+function revealCards() {
+  const triggerBottom = window.innerHeight * 0.85;
+
+  teacherCards.forEach(card => {
+    const cardTop = card.getBoundingClientRect().top;
+    if (cardTop < triggerBottom) {
+      card.classList.add('show');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealCards);
+window.addEventListener('load', revealCards); // Run on page load too
+
+// form
+// Form submission
+document.getElementById('studentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+  
+    const fullname = document.getElementById('fullname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const guardian = document.getElementById('guardianName').value.trim();
+    const formMessage = document.getElementById('formMessage');
+  
+    if (fullname && email && guardian) {
+      formMessage.textContent = "✅ Registration successful! Thank you, " + fullname + ".";
+      formMessage.style.color = "green";
+      this.reset();
+      document.getElementById('previewImage').style.display = "none"; // Hide preview after reset
+    } else {
+      formMessage.textContent = "❌ Please fill in all required fields.";
+      formMessage.style.color = "red";
+    }
+  });
+  
+  // Passport preview
+  document.getElementById('passport').addEventListener('change', function(event) {
+    const preview = document.getElementById('previewImage');
+    const file = event.target.files[0];
+  
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        preview.src = e.target.result;
+        preview.style.display = "block";
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+// subject selection
+document.getElementById('studentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+  
+    const fullname = document.getElementById('fullname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const guardian = document.getElementById('guardianName').value.trim();
+    const subject2 = document.getElementById('subject2').value.trim();
+    const subject3 = document.getElementById('subject3').value.trim();
+    const formMessage = document.getElementById('formMessage');
+  
+    if (fullname && email && guardian && subject2 && subject3) {
+      formMessage.textContent = "✅ Registration successful! Thank you, " + fullname + ".";
+      formMessage.style.color = "green";
+      this.reset();
+      document.getElementById('previewImage').style.display = "none";
+    } else {
+      formMessage.textContent = "❌ Please fill in all required fields, including subjects.";
+      formMessage.style.color = "red";
+    }
+  });
+// chatbot
+function toggleChat() {
+    const chat = document.getElementById("chatContainer");
+    chat.style.display = (chat.style.display === "flex") ? "none" : "flex";
+  }
+
+  function sendMessage() {
+    const input = document.getElementById("userInput");
+    const message = input.value.trim();
+    if (message === "") return;
+
+    // Display user message
+    addMessage(message, "user-message");
+
+    // Bot reply
+    setTimeout(() => {
+      const reply = getBotReply(message);
+      addMessage(reply, "bot-message");
+    }, 600);
+
+    input.value = "";
+  }
+
+  function addMessage(text, className) {
+    const chatBox = document.getElementById("chatBox");
+    const messageDiv = document.createElement("div");
+    messageDiv.classList.add("message", className);
+    messageDiv.textContent = text;
+    chatBox.appendChild(messageDiv);
+    chatBox.scrollTop = chatBox.scrollHeight; // auto scroll
+  }
+
+  function getBotReply(userMessage) {
+    const msg = userMessage.toLowerCase();
+
+    if (msg.includes("hello") || msg.includes("hi")) {
+      return "Hello! 👋 Welcome to our school website.";
+    } else if (msg.includes("admission")) {
+      return "Our admission is currently open. You can register online.";
+    } else if (msg.includes("contact")) {
+      return "Reach us at: 📞 080-123-4567 or ✉️ info@ourschool.com";
+    } else if (msg.includes("thanks")) {
+      return "You're welcome! 😊";
+    } else if (msg.includes("jamb2026")) {
+      return "Here is the link. http://127.0.0.1:5500/Brainwave/registeration.html";
+    } else if(msg.includes("good morning")) {
+      return "morning, how are You Doing!";
+    } else if (msg.includes("am doing fine!")){
+      return "That's Great. How can we Help You."
+    } else {
+      return "Sorry, I don’t understand that. Try asking about 'admission', 'contact', or 'hello'" ;
+    }
+  
+
+  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bascem college - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="images/logo1.png" type="image/x-icon">
+</head>
+<body>
+
+     <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+        <div class="logo"> <img src="images/logo1.png" alt="logo" width="35px" height="35px" > BASCEM COLLEGE</div>
+      <ul class="nav-links">
+        <li class="links"><a href="index.html">Home</a></li>
+        <li class="links"><a href="index.html#about">About Us</a></li>
+        <li class="links"><a href="index.html#courses">Courses</a></li>
+        <li class="links"><a href="centers.html">Centers</a></li>
+        <li sclass="links"><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </nav>
+  </header>
+
+      <!-- Hero Section -->
+  <section id="centers" class="centers" >
+    <div class="hero-content">
+      <h1>Tutorial Centers</h1>
+      <p>Bacsem  College Maiduguri, Borno State.</p>
+      <a href="registeration.html" class="btn">Register Now</a>
+    </div>
+  </section>
+
+   <!-- Biography Section -->
+  <section class="bio-section">
+    <div class="bio-container">
+      
+      <!-- Image -->
+      <div class="bio-image">
+        <img src="images/pic2.jpg" alt="Proprietor Photo">
+      </div>
+
+      <!-- Biography Text -->
+      <div class="bio-text">
+         <h2>Aisha Buhari Integrated School</h2>
+        <h4>New Gra, Maiduguri, Borno State.</h4>
+        <p>
+          Tutorial Days: <br>
+          Wednesday: 04:00pm Prompt <br>
+          Thursday: 04:00pm Prompt <br>
+          Friday: 02:00pm Prompt 
+        </p>
+        <p>
+          Administrative office:
+          Office C25, Assurance Plaza, Along Giwa <br>
+           Barracks Maiduguri, Borno State.
+        </p>
+      </div>
+      
+    </div>
+  </section>
+
+
+   <!-- Biography Section -->
+  <section class="bio-section">
+    <div class="bio-container">
+      
+      <!-- Image -->
+      <div class="bio-image">
+        <img src="images/pic6.jpg" alt="Proprietor Photo">
+      </div>
+
+      <!-- Biography Text -->
+      <div class="bio-text">
+        <h2>City Internaational School</h2>
+        <h4>Wulari, After Sheria Court Maiduguri, Borno State.</h4>
+        <p>
+          Tutorial Days: <br>
+          Friday: 02:00pm Prompt <br>
+          Saturday: 09:00am Prompt 
+        </p>
+        <p>
+          Administrative office:
+          Office C25, Assurance Plaza, Along Giwa <br>
+          Barracks Maiduguri, Borno State.
+        </p>
+      </div>
+      
+    </div>
+  </section>
+
+    <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form id="contactForm" action="https://formsubmit.co/bacsemcolleg@gmail.com">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+    <p id="formMessage"></p>
+  </section>
+
+   <!-- Floating Icon -->
+   <div class="chat-icon" onclick="toggleChat()">💬</div>
+
+   <!-- Chatbot Window -->
+   <div class="chat-container" id="chatContainer">
+     <div class="chat-header">School Chatbot 🤖</div>
+     <div class="chat-box" id="chatBox"></div>
+     <div class="chat-input">
+       <input type="text" id="userInput" placeholder="Type a message...">
+       <button onclick="sendMessage()">Send</button>
+     </div>
+   </div>
+
+
+  <!-- footers -->
+   <!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-container">
+  
+      <!-- Newsletter -->
+      <div class="footer-box">
+        <h3>Newsletter</h3>
+        <p>Subscribe to our newsletter for updates on school events.</p>
+        <form class="newsletter-form" action="https://formsubmit.co/alexanderinnocentalexis9@gmail.com" method="post">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+  
+      <!-- Sponsors -->
+      <div class="footer-box">
+        <h3>Our Sponsors</h3>
+        <ul>
+          <li><a href="#">Care Best Initiative</a></li>
+          <li><a href="#">Yerwa Youth Initiative </a></li>
+          <li><a href="#">Global Books Ltd</a></li>
+          <li><a href="#">Community Partners</a></li>
+        </ul>
+      </div>
+  
+      <!-- Blog Links -->
+      <div class="footer-box">
+        <h3>From Our Blog</h3>
+        <ul>
+          <li><a href="#">5 Tips for Student Success</a></li>
+          <li><a href="#">Why Moral Values Matter</a></li>
+          <li><a href="#">The Future of Digital Learning</a></li>
+          <li><a href="#">Community Outreach Programs</a></li>
+        </ul>
+      </div>
+  
+      <!-- Social Media -->
+      <div class="footer-box">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="https://web.facebook.com/p/Brainwave-Tutorial-Centre-100083237209246/?_rdc=1&_rdr#"><i class="fab fa-facebook-f"></i></a>
+          <!-- <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a> -->
+          <a href="https://www.instagram.com/bacsemcollege"><i class="fab fa-instagram"></i></a>
+          <!-- <a href="https://www.instagram.com/bacsemcollege"><i class="fab fa-youtube"></i></a> -->
+        </div>
+      </div>
+        
+    </div>
+  
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Bascem College. All rights reserved.</p>
+      <p>Created by: Alexzo Graphics</p>
+    </div>
+  </footer>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+
+  <script src="app.js"></script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bascem college - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="images/logo1.png" type="image/x-icon">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+        <div class="logo"> <img src="images/logo1.png" alt="logo" width="35px" height="35px" > BASCEM COLLEGE</div>
+      <ul class="nav-links">
+        <li class="links"><a href="#home">Home</a></li>
+        <li class="links"><a href="#about">About Us</a></li>
+        <li class="links"><a href="#courses">Courses</a></li>
+        <li class="links"><a href="centers.html">Centers</a></li>
+        <li sclass="links"><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Bacsem college</h1>
+      <p>Building a brighter future through quality education.</p>
+      <a href="registeration.html" class="btn">Register Now</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>
+      Bascem College is committed to nurturing young minds with a blend of 
+      academic excellence and moral values. We prepare students for success in life.
+    </p>
+  </section>
+
+
+  <!-- Biography Section -->
+  <section class="bio-section">
+    <div class="bio-container">
+      
+      <!-- Image -->
+      <div class="bio-image">
+        <img src="images/ceo.jpg" alt="Proprietor Photo">
+      </div>
+
+      <!-- Biography Text -->
+      <div class="bio-text">
+        <h2>Mr. Daniel O. Uwada</h2>
+        <h4>Founder & Proprietor, Bascem College</h4>
+        <p>
+          Mr. Daniel O. Uwada is the visionary founder of Sunrise Academy, 
+          with over 20 years of experience in education. He holds a Bachelor’s 
+          Degree in Education and a Master’s in Educational Administration. 
+        </p>
+        <p>
+          Passionate about nurturing young minds, he established the school 
+          in 2010 to provide academic excellence alongside strong moral values. 
+          Under his leadership, Bascem College has grown into one of the 
+          most respected institutions in the region.
+        </p>
+      </div>
+      
+    </div>
+  </section>
+  <!-- teachers -->
+
+  <!-- Teachers Section -->
+  <section class="teachers">
+    <h2>Meet Our Tutors</h2>
+    <div class="teacher-container">
+
+      <!-- Teacher 1 -->
+      <div class="teacher-card">
+        <img src="images/Faith Affuafor .jpg" alt="Teacher 1">
+        <h3>Mrs Euffuafor Faith</h3>
+        <p>Senior Science Teacher with 15 years of experience in inspiring students through Physics and Chemistry.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Teacher 2 -->
+      <div class="teacher-card">
+        <img src="images/t5.jpg" alt="Teacher 2">
+        <h3>Mr Paul</h3>
+        <p>Mathematics teacher with a passion for problem-solving and mentoring young learners in logical thinking.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Teacher 3 -->
+      <div class="teacher-card">
+        <img src="images/t7.jpg" alt="Teacher 3">
+        <h3>Miss shalom S. Oderinde</h3>
+        <p>English and Literature teacher who encourages creativity and communication through storytelling and reading.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Teacher 4 -->
+      <div class="teacher-card">
+        <img src="images/t6.jpg" alt="Teacher 4">
+        <h3>Dr. Wenom Luka</h3>
+        <p>ICT specialist dedicated to teaching computer skills, coding, and digital literacy for the future generation.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Courses Section -->
+  <section id="courses" class="courses">
+    <h2>Our Departments:</h2>
+    <div class="course-cards">
+      <div class="card">
+        <h3>Science</h3>
+        <p>Explore the world of physics, chemistry, and biology.</p>
+      </div>
+      <div class="card">
+        <h3>Arts</h3>
+        <p>Develop creativity and critical thinking through literature and history.</p>
+      </div>
+      <div class="card">
+        <h3>Commercial</h3>
+        <p>Learn Accounting, Economics, and Business Administration.</p>
+      </div>
+    </div>
+  <!-- </sectionu up coming event> -->
+
+  <section class="event-slider">
+    <h2>🎉 JAMB 2026: THE WAY FORWARD</h2>
+    
+    <!-- Slideshow -->
+    <div class="slideshow-container">
+      <div class="slide fade">
+        <img src="images/ban.jpg" alt="Event Image 1">
+      </div>
+      <div class="slide fade">
+        <img src="images/ban2.jpg" alt="Event Image 2">
+      </div>
+      <div class="slide fade">
+        <img src="images/ban3.jpg" alt="Event Image 3">
+      </div>
+    </div>
+
+    <!-- Countdown Timer -->
+    <div class="countdown">
+      <h3>Event Starts In:</h3>
+      <div id="timer">
+        <span id="days">00</span> Days 
+        <span id="hours">00</span> Hrs 
+        <span id="minutes">00</span> Min 
+        <span id="seconds">00</span> Sec
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form id="contactForm" action="https://formsubmit.co/bacsemcolleg@gmail.com">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+    <p id="formMessage"></p>
+  </section>
+
+   <!-- Floating Icon -->
+   <div class="chat-icon" onclick="toggleChat()">💬</div>
+
+   <!-- Chatbot Window -->
+   <div class="chat-container" id="chatContainer">
+     <div class="chat-header">School Chatbot 🤖</div>
+     <div class="chat-box" id="chatBox"></div>
+     <div class="chat-input">
+       <input type="text" id="userInput" placeholder="Type a message...">
+       <button onclick="sendMessage()">Send</button>
+     </div>
+   </div>
+
+
+  <!-- footers -->
+   <!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-container">
+  
+      <!-- Newsletter -->
+      <div class="footer-box">
+        <h3>Newsletter</h3>
+        <p>Subscribe to our newsletter for updates on school events.</p>
+        <form class="newsletter-form" action="https://formsubmit.co/alexanderinnocentalexis9@gmail.com" method="post">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+  
+      <!-- Sponsors -->
+      <div class="footer-box">
+        <h3>Our Sponsors</h3>
+        <ul>
+          <li><a href="#">Care Best Initiative</a></li>
+          <li><a href="#">Yerwa Youth Initiative </a></li>
+          <li><a href="#">Global Books Ltd</a></li>
+          <li><a href="#">Community Partners</a></li>
+        </ul>
+      </div>
+  
+      <!-- Blog Links -->
+      <div class="footer-box">
+        <h3>From Our Blog</h3>
+        <ul>
+          <li><a href="#">5 Tips for Student Success</a></li>
+          <li><a href="#">Why Moral Values Matter</a></li>
+          <li><a href="#">The Future of Digital Learning</a></li>
+          <li><a href="#">Community Outreach Programs</a></li>
+        </ul>
+      </div>
+  
+      <!-- Social Media -->
+      <div class="footer-box">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="https://web.facebook.com/p/Brainwave-Tutorial-Centre-100083237209246/?_rdc=1&_rdr#"><i class="fab fa-facebook-f"></i></a>
+          <!-- <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a> -->
+          <a href="https://www.instagram.com/bacsemcollege"><i class="fab fa-instagram"></i></a>
+          <!-- <a href="https://www.instagram.com/bacsemcollege"><i class="fab fa-youtube"></i></a> -->
+        </div>
+      </div>
+  
+    </div>
+  
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Bascem College. All rights reserved.</p>
+      <p>Created by: Alexzo Graphics</p>
+    </div>
+  </footer>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+
+  <script src="app.js"></script>
+</body>
+</html>
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bascem college - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="images/logo1.png" type="image/x-icon">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo"> <img src="images/logo1.png" alt="" width="35px" height="35px"> BASCEM COLLEGE</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="index.html#courses">Courses</a></li>
+        <li class="links"><a href="centers.html">Centers</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </nav>
+  </header>
+<!-- Registration -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="registration-form">
+    <h2>Student Registration Form</h2>
+    <form id="studentForm" action="https://formsubmit.co/alexanderinnocentalexis9@gmail.com"  method="post">
+      <!-- Personal Info -->
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Enter full name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob" required>
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <div class="radio-group">
+          <label><input type="radio" name="gender" value="Male" required> Male</label>
+          <label><input type="radio" name="gender" value="Female"> Female</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="class">Class Applying For</label>
+        <select id="class" name="class" required>
+          <option value="">-- Select Class --</option>
+          <option value="JSS 1">JSS 1</option>
+          <option value="JSS 2">JSS 2</option>
+          <option value="JSS 3">JSS 3</option>
+          <option value="SSS 1">SSS 1</option>
+          <option value="SSS 2">SSS 2</option>
+          <option value="SSS 3">SSS 3</option>
+        </select>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="form-group">
+        <label for="email">Student Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Student Phone</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+      </div>
+
+      <!-- Guardian Info -->
+      <h3>Parent/Guardian Information</h3>
+
+      <div class="form-group">
+        <label for="guardianName">Guardian Name</label>
+        <input type="text" id="guardianName" name="guardianName" placeholder="Enter guardian's full name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="guardianPhone">Guardian Phone</label>
+        <input type="tel" id="guardianPhone" name="guardianPhone" placeholder="Enter guardian's phone number" required>
+      </div>
+
+      <div class="form-group">
+        <label for="guardianEmail">Guardian Email</label>
+        <input type="email" id="guardianEmail" name="guardianEmail" placeholder="Enter guardian's email">
+      </div>
+
+      <!-- subjaects -->
+
+      <h3>Subjects Selection</h3>
+
+<div class="form-group">
+  <label for="subject1">Compulsory Subject</label>
+  <input type="text" id="subject1" name="subject1" value="English Language" readonly>
+</div>
+
+<div class="form-group">
+  <label for="subject2">Subject 2</label>
+  <input type="text" id="subject2" name="subject2" placeholder="Enter subject" required>
+</div>
+
+<div class="form-group">
+  <label for="subject3">Subject 3</label>
+  <input type="text" id="subject3" name="subject3" placeholder="Enter subject" required>
+</div>
+
+<div class="form-group">
+  <label for="subject4">Subject 4</label>
+  <input type="text" id="subject4" name="subject4" placeholder="Enter subject">
+</div>
+
+      
+       <!-- Passport Upload -->
+       <div class="form-group">
+        <label for="passport">Upload Passport Photo</label>
+        <input type="file" id="passport" name="passport" accept="image/*" required>
+        <div class="passport-preview">
+          <img id="previewImage" src="#" alt="Passport Preview" style="display:none;">
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn">Register</button>
+      <p id="formMessage"></p>
+    </form>
+  </section>
+
+   <!-- footers -->
+   <!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-container">
+  
+      <!-- Newsletter -->
+      <div class="footer-box">
+        <h3>Newsletter</h3>
+        <p>Subscribe to our newsletter for updates on school events.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+  
+      <!-- Sponsors -->
+      <div class="footer-box">
+        <h3>Our Sponsors</h3>
+        <ul>
+          <li><a href="#">Care Best Initiative</a></li>
+          <li><a href="#">Yerwa Youth Initiative </a></li>
+          <li><a href="#">Global Books Ltd</a></li>
+          <li><a href="#">Community Partners</a></li>
+        </ul>
+      </div>
+  
+      <!-- Blog Links -->
+      <div class="footer-box">
+        <h3>From Our Blog</h3>
+        <ul>
+          <li><a href="#">5 Tips for Student Success</a></li>
+          <li><a href="#">Why Moral Values Matter</a></li>
+          <li><a href="#">The Future of Digital Learning</a></li>
+          <li><a href="#">Community Outreach Programs</a></li>
+        </ul>
+      </div>
+  
+      <!-- Social Media -->
+      <div class="footer-box">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+  
+    </div>
+  
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Bascem College. All rights reserved.</p>
+      <p>Created by: Alexzo Graphics</p>
+    </div>
+  </footer>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+
+  <script src="app.js"></script>
+  <script src="script.js"></script>
+
+
+  </body>
+</html>
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    line-height: 1.6;
+  }
+  
+  /* Navbar */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #012c57;
+    padding: 1rem 2rem;
+    color: white;
+    position: sticky;
+    top: 0;
+  }
+  
+  .navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .navbar .nav-links {
+    display: flex;
+    list-style: none;
+  }
+  
+  .navbar .nav-links li {
+    margin-left: 20px;
+  }
+  
+  .navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .navbar .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Hero Section */
+  .hero {
+    background: url('images/3.jpeg') no-repeat center center/cover;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+  .centers {
+    background: url('images/kenny-eliason-zFSo6bnZJTw-unsplash.jpg') no-repeat center center/cover;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+   .centers h1 {
+    font-size: 3rem;
+  }
+  
+  .centers p {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+  }
+  
+  
+  .hero h1 {
+    font-size: 3rem;
+  }
+  
+  .hero p {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #059200;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  .btn:hover {
+    background: #038d4a;
+  }
+  
+  /* Sections */
+  section {
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  
+  .about, .courses, .contact {
+    background: #f4f4f4;
+  }
+  
+  h2 {
+    margin-bottom: 1rem;
+    color: #038d4a;
+  }
+  
+  /* Courses */
+  .course-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    width: 250px;
+  }
+  
+  .card h3 {
+    margin-bottom: 10px;
+    color: #059200;
+  }
+
+  /* biography */
+  /* Biography Section */
+.bio-section {
+    padding: 3rem 2rem;
+    background: white;
+    max-width: 1000px;
+    margin: 2rem auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+  
+  .bio-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .bio-image img {
+    width: 300px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  
+  .bio-text {
+    flex: 1;
+  }
+  
+  .bio-text h2 {
+    color:#038d4a;
+    margin-bottom: 0.3rem;
+  }
+  
+  .bio-text h4 {
+    color: #555;
+    margin-bottom: 1rem;
+    font-weight: normal;
+  }
+  
+  .bio-text p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  /* Responsive for small screens */
+  @media (max-width: 768px) {
+    .bio-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .bio-image img {
+      width: 100%;
+      max-width: 350px;
+      height: auto;
+    }
+  }
+
+  /* Teachers Section */
+  .teachers {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: white;
+  }
+  
+  .teachers h2 {
+    color:#038d4a;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+  
+  .teacher-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .teacher-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .teacher-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  
+  .teacher-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  .teacher-card h3 {
+    color: #038d4a;
+    margin-bottom: 0.5rem;
+  }
+  
+  .teacher-card p {
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+  /* Social Media Links */
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .social-links a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #000000;
+    transition: color 0.3s;
+  }
+  
+  .social-links a:hover {
+    color: #ff6600;
+  }
+  
+  
+  /* Contact */
+  form {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form input, form textarea {
+    margin: 10px 0;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  form button {
+    margin-top: 10px;
+  }
+  
+  /* Footer */
+  footer {
+    background: #004080;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+  
+    .navbar .nav-links {
+      display: none;
+      flex-direction: column;
+      background: #004080;
+      position: absolute;
+      align-items: center;
+      justify-content: center;
+      top: 60px;
+      right: 0;
+      width: 550px;
+      font-weight:200 ;
+      text-align: right;
+      height: 50vh;
+  
+    }
+    .links{
+      padding: 30px ;
+    }
+    .navbar .nav-links a{
+      font-weight: 200;
+      align-items: center;
+      justify-content: space-between;
+
+      margin: 30px 0;
+      padding: 500px 30px;
+    }
+    .navbar .nav-links a:hover{
+     color: #038d4a;
+     transition: 0.3s ease-in-out;
+    
+    }
+  
+    .navbar .nav-links.active {
+      display: flex;
+    }
+  
+    .navbar .menu-toggle {
+      display: block;
+    }
+  
+    .course-cards {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  /* count down event */
+  /* Slideshow */
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  
+  .slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .fade {
+    animation: fadeEffect 1s ease-in-out;
+  }
+  
+  @keyframes fadeEffect {
+    from {opacity: 0.4}
+    to {opacity: 1}
+  }
+  
+  /* Countdown Timer */
+  .countdown {
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  #timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #012c57;
+    margin-top: 10px;
+  }
+  
+  /* Footer Styles */
+.footer {
+    background: #004080;
+    color: #fff;
+    padding: 3rem 2rem 1rem;
+    margin-top: 2rem;
+  }
+  
+  .footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .footer-box h3 {
+    margin-bottom: 1rem;
+    color: #ffaa00;
+  }
+  
+  .footer-box p {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  /* Newsletter Form */
+  .newsletter-form {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .newsletter-form input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .newsletter-form button {
+    padding: 10px 15px;
+    background: #059200;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .newsletter-form button:hover {
+    background: #ffaa00;
+  }
+  
+  /* Lists */
+  .footer-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-box ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-box ul li a {
+    text-decoration: none;
+    color: #ddd;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+  }
+  
+  .footer-box ul li a:hover {
+    color: #ffaa00;
+  }
+  
+  /* Social Media */
+  .social-links {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .social-links a {
+    display: inline-block;
+    font-size: 1.2rem;
+    color: #ffaa00;
+    background: rgba(255,255,255,0.1);
+    padding: 10px;
+    border-radius: 50%;
+    transition: background 0.3s, transform 0.3s;
+  }
+  
+  
+  .social-links a:hover {
+    background: #ffaa00;
+    color: #004080;
+    transform: scale(1.1);
+  }
+  
+  /* Bottom Bar */
+  .footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 1rem;
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: #ddd;
+  }
+  /* registration */
+
+  .registration-form {
+    max-width: 600px;
+    background: #fff;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+  
+  .registration-form h2, 
+  .registration-form h3 {
+    text-align: center;
+    color:  #038d4a;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: #038d4a;
+  }
+  
+  .radio-group {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #038d4a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .btn:hover {
+    background: #038d4a;
+  }
+  
+  #formMessage {
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: bold;
+  }
+  .passport-preview {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .passport-preview img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #038d4a;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+  /* subject selectin */
+
+  input[readonly] {
+    background-color: #f0f0f0;
+    color: #555;
+    cursor: not-allowed;
+  }
+
+/* chatboyt */
+
+    /* Chatbot Icon */
+    .chat-icon {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background:  #038d4a;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      }
+  
+      /* Chat Container (hidden by default) */
+      .chat-container {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 350px;
+        height: 500px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+      }
+  
+      .chat-header {
+        background: #004080;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+  
+      .chat-box {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+      }
+  
+      .message {
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 8px;
+        max-width: 75%;
+      }
+  
+      .user-message {
+        background:  #038d40;
+        color: white;
+        align-self: flex-end;
+      }
+  
+      .bot-message {
+        background: #e0e0e0;
+        color: black;
+        align-self: flex-start;
+      }
+  
+      .chat-input {
+        display: flex;
+        border-top: 1px solid #ccc;
+      }
+  
+      .chat-input input {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        outline: none;
+      }
+  
+      .chat-input button {
+        padding: 10px 15px;
+        background:  #038d4a;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+  
+      .chat-input button:hover {
+        background: #002f5c;
+      }
