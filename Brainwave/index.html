@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bascem college - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="images/logo1.png" type="image/x-icon">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+        <div class="logo"> <img src="images/logo1.png" alt="logo" width="35px" height="35px" > BASCEM COLLEGE</div>
+      <ul class="nav-links">
+        <li class="links"><a href="#home">Home</a></li>
+        <li class="links"><a href="#about">About Us</a></li>
+        <li class="links"><a href="#courses">Courses</a></li>
+        <li class="links"><a href="centers.html">Centers</a></li>
+        <li sclass="links"><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Bacsem college</h1>
+      <p>Building a brighter future through quality education.</p>
+      <a href="registeration.html" class="btn">Register Now</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>
+      Bascem College is committed to nurturing young minds with a blend of 
+      academic excellence and moral values. We prepare students for success in life.
+    </p>
+  </section>
+
+
+  <!-- Biography Section -->
+  <section class="bio-section">
+    <div class="bio-container">
+      
+      <!-- Image -->
+      <div class="bio-image">
+        <img src="images/ceo.jpg" alt="Proprietor Photo">
+      </div>
+
+      <!-- Biography Text -->
+      <div class="bio-text">
+        <h2>Mr. Daniel O. Uwada</h2>
+        <h4>Founder & Proprietor, Bascem College</h4>
+        <p>
+          Mr. Daniel O. Uwada is the visionary founder of Sunrise Academy, 
+          with over 20 years of experience in education. He holds a Bachelor’s 
+          Degree in Education and a Master’s in Educational Administration. 
+        </p>
+        <p>
+          Passionate about nurturing young minds, he established the school 
+          in 2010 to provide academic excellence alongside strong moral values. 
+          Under his leadership, Bascem College has grown into one of the 
+          most respected institutions in the region.
+        </p>
+      </div>
+      
+    </div>
+  </section>
+  <!-- teachers -->
+
+  <!-- Teachers Section -->
+  <section class="teachers">
+    <h2>Meet Our Tutors</h2>
+    <div class="teacher-container">
+
+      <!-- Teacher 1 -->
+      <div class="teacher-card">
+        <img src="images/Faith Affuafor .jpg" alt="Teacher 1">
+        <h3>Mrs Euffuafor Faith</h3>
+        <p>Senior Science Teacher with 15 years of experience in inspiring students through Physics and Chemistry.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Teacher 2 -->
+      <div class="teacher-card">
+        <img src="images/t5.jpg" alt="Teacher 2">
+        <h3>Mr Paul</h3>
+        <p>Mathematics teacher with a passion for problem-solving and mentoring young learners in logical thinking.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Teacher 3 -->
+      <div class="teacher-card">
+        <img src="images/t7.jpg" alt="Teacher 3">
+        <h3>Miss shalom S. Oderinde</h3>
+        <p>English and Literature teacher who encourages creativity and communication through storytelling and reading.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Teacher 4 -->
+      <div class="teacher-card">
+        <img src="images/t6.jpg" alt="Teacher 4">
+        <h3>Dr. Wenom Luka</h3>
+        <p>ICT specialist dedicated to teaching computer skills, coding, and digital literacy for the future generation.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Courses Section -->
+  <section id="courses" class="courses">
+    <h2>Our Departments:</h2>
+    <div class="course-cards">
+      <div class="card">
+        <h3>Science</h3>
+        <p>Explore the world of physics, chemistry, and biology.</p>
+      </div>
+      <div class="card">
+        <h3>Arts</h3>
+        <p>Develop creativity and critical thinking through literature and history.</p>
+      </div>
+      <div class="card">
+        <h3>Commercial</h3>
+        <p>Learn Accounting, Economics, and Business Administration.</p>
+      </div>
+    </div>
+  <!-- </sectionu up coming event> -->
+
+  <section class="event-slider">
+    <h2>🎉 JAMB 2026: THE WAY FORWARD</h2>
+    
+    <!-- Slideshow -->
+    <div class="slideshow-container">
+      <div class="slide fade">
+        <img src="images/ban.jpg" alt="Event Image 1">
+      </div>
+      <div class="slide fade">
+        <img src="images/ban2.jpg" alt="Event Image 2">
+      </div>
+      <div class="slide fade">
+        <img src="images/ban3.jpg" alt="Event Image 3">
+      </div>
+    </div>
+
+    <!-- Countdown Timer -->
+    <div class="countdown">
+      <h3>Event Starts In:</h3>
+      <div id="timer">
+        <span id="days">00</span> Days 
+        <span id="hours">00</span> Hrs 
+        <span id="minutes">00</span> Min 
+        <span id="seconds">00</span> Sec
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form id="contactForm" action="https://formsubmit.co/bacsemcolleg@gmail.com">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+    <p id="formMessage"></p>
+  </section>
+
+   <!-- Floating Icon -->
+   <div class="chat-icon" onclick="toggleChat()">💬</div>
+
+   <!-- Chatbot Window -->
+   <div class="chat-container" id="chatContainer">
+     <div class="chat-header">School Chatbot 🤖</div>
+     <div class="chat-box" id="chatBox"></div>
+     <div class="chat-input">
+       <input type="text" id="userInput" placeholder="Type a message...">
+       <button onclick="sendMessage()">Send</button>
+     </div>
+   </div>
+
+
+  <!-- footers -->
+   <!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-container">
+  
+      <!-- Newsletter -->
+      <div class="footer-box">
+        <h3>Newsletter</h3>
+        <p>Subscribe to our newsletter for updates on school events.</p>
+        <form class="newsletter-form" action="https://formsubmit.co/alexanderinnocentalexis9@gmail.com" method="post">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+  
+      <!-- Sponsors -->
+      <div class="footer-box">
+        <h3>Our Sponsors</h3>
+        <ul>
+          <li><a href="#">Care Best Initiative</a></li>
+          <li><a href="#">Yerwa Youth Initiative </a></li>
+          <li><a href="#">Global Books Ltd</a></li>
+          <li><a href="#">Community Partners</a></li>
+        </ul>
+      </div>
+  
+      <!-- Blog Links -->
+      <div class="footer-box">
+        <h3>From Our Blog</h3>
+        <ul>
+          <li><a href="#">5 Tips for Student Success</a></li>
+          <li><a href="#">Why Moral Values Matter</a></li>
+          <li><a href="#">The Future of Digital Learning</a></li>
+          <li><a href="#">Community Outreach Programs</a></li>
+        </ul>
+      </div>
+  
+      <!-- Social Media -->
+      <div class="footer-box">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="https://web.facebook.com/p/Brainwave-Tutorial-Centre-100083237209246/?_rdc=1&_rdr#"><i class="fab fa-facebook-f"></i></a>
+          <!-- <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a> -->
+          <a href="https://www.instagram.com/bacsemcollege"><i class="fab fa-instagram"></i></a>
+          <!-- <a href="https://www.instagram.com/bacsemcollege"><i class="fab fa-youtube"></i></a> -->
+        </div>
+      </div>
+  
+    </div>
+  
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Bascem College. All rights reserved.</p>
+      <p>Created by: Alexzo Graphics</p>
+    </div>
+  </footer>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+
+  <script src="app.js"></script>
+</body>
+</html>

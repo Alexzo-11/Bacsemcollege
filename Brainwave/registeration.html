@@ -1,0 +1,206 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bascem college - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="images/logo1.png" type="image/x-icon">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo"> <img src="images/logo1.png" alt="" width="35px" height="35px"> BASCEM COLLEGE</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="index.html#courses">Courses</a></li>
+        <li class="links"><a href="centers.html">Centers</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </nav>
+  </header>
+<!-- Registration -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="registration-form">
+    <h2>Student Registration Form</h2>
+    <form id="studentForm" action="https://formsubmit.co/alexanderinnocentalexis9@gmail.com"  method="post">
+      <!-- Personal Info -->
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Enter full name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob" required>
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <div class="radio-group">
+          <label><input type="radio" name="gender" value="Male" required> Male</label>
+          <label><input type="radio" name="gender" value="Female"> Female</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="class">Class Applying For</label>
+        <select id="class" name="class" required>
+          <option value="">-- Select Class --</option>
+          <option value="JSS 1">JSS 1</option>
+          <option value="JSS 2">JSS 2</option>
+          <option value="JSS 3">JSS 3</option>
+          <option value="SSS 1">SSS 1</option>
+          <option value="SSS 2">SSS 2</option>
+          <option value="SSS 3">SSS 3</option>
+        </select>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="form-group">
+        <label for="email">Student Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Student Phone</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+      </div>
+
+      <!-- Guardian Info -->
+      <h3>Parent/Guardian Information</h3>
+
+      <div class="form-group">
+        <label for="guardianName">Guardian Name</label>
+        <input type="text" id="guardianName" name="guardianName" placeholder="Enter guardian's full name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="guardianPhone">Guardian Phone</label>
+        <input type="tel" id="guardianPhone" name="guardianPhone" placeholder="Enter guardian's phone number" required>
+      </div>
+
+      <div class="form-group">
+        <label for="guardianEmail">Guardian Email</label>
+        <input type="email" id="guardianEmail" name="guardianEmail" placeholder="Enter guardian's email">
+      </div>
+
+      <!-- subjaects -->
+
+      <h3>Subjects Selection</h3>
+
+<div class="form-group">
+  <label for="subject1">Compulsory Subject</label>
+  <input type="text" id="subject1" name="subject1" value="English Language" readonly>
+</div>
+
+<div class="form-group">
+  <label for="subject2">Subject 2</label>
+  <input type="text" id="subject2" name="subject2" placeholder="Enter subject" required>
+</div>
+
+<div class="form-group">
+  <label for="subject3">Subject 3</label>
+  <input type="text" id="subject3" name="subject3" placeholder="Enter subject" required>
+</div>
+
+<div class="form-group">
+  <label for="subject4">Subject 4</label>
+  <input type="text" id="subject4" name="subject4" placeholder="Enter subject">
+</div>
+
+      
+       <!-- Passport Upload -->
+       <div class="form-group">
+        <label for="passport">Upload Passport Photo</label>
+        <input type="file" id="passport" name="passport" accept="image/*" required>
+        <div class="passport-preview">
+          <img id="previewImage" src="#" alt="Passport Preview" style="display:none;">
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn">Register</button>
+      <p id="formMessage"></p>
+    </form>
+  </section>
+
+   <!-- footers -->
+   <!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-container">
+  
+      <!-- Newsletter -->
+      <div class="footer-box">
+        <h3>Newsletter</h3>
+        <p>Subscribe to our newsletter for updates on school events.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+  
+      <!-- Sponsors -->
+      <div class="footer-box">
+        <h3>Our Sponsors</h3>
+        <ul>
+          <li><a href="#">Care Best Initiative</a></li>
+          <li><a href="#">Yerwa Youth Initiative </a></li>
+          <li><a href="#">Global Books Ltd</a></li>
+          <li><a href="#">Community Partners</a></li>
+        </ul>
+      </div>
+  
+      <!-- Blog Links -->
+      <div class="footer-box">
+        <h3>From Our Blog</h3>
+        <ul>
+          <li><a href="#">5 Tips for Student Success</a></li>
+          <li><a href="#">Why Moral Values Matter</a></li>
+          <li><a href="#">The Future of Digital Learning</a></li>
+          <li><a href="#">Community Outreach Programs</a></li>
+        </ul>
+      </div>
+  
+      <!-- Social Media -->
+      <div class="footer-box">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+  
+    </div>
+  
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 Bascem College. All rights reserved.</p>
+      <p>Created by: Alexzo Graphics</p>
+    </div>
+  </footer>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+
+  <script src="app.js"></script>
+  <script src="script.js"></script>
+
+
+  </body>
+</html>
